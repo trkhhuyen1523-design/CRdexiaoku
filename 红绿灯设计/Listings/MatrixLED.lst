@@ -1,0 +1,71 @@
+C51 COMPILER V9.54   MATRIXLED                                                             09/17/2026 15:33:00 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MATRIXLED
+OBJECT MODULE PLACED IN .\Objects\MatrixLED.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE MatrixLED.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\MatrixLED.lst) TABS(2) OBJECT(.\Objects\MatrixLED.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay1ms.h"
+   3          sbit RCK=P3^5;    //RCLK
+   4          sbit SCK=P3^6;    //SRCLK
+   5          sbit SER=P3^4;    //SER
+   6          
+   7          #define MATRIX_LED_PORT   P0
+   8          
+   9          /**
+  10            * @brief  74HC595??????
+  11            * @param  Byte ??????
+  12            * @retval ?
+  13            */
+  14          void _74HC595_WriteByte(unsigned char Byte)
+  15          {
+  16   1        unsigned char i;
+  17   1        for(i=0;i<8;i++)
+  18   1        {
+  19   2          SER=Byte&(0x80>>i);
+  20   2          SCK=1;
+  21   2          SCK=0;
+  22   2        }
+  23   1        RCK=1;
+  24   1        RCK=0;
+  25   1      }
+  26          void MstrixLED_Init()
+  27          {
+  28   1        SCK=0;
+  29   1        RCK=0;
+  30   1      }
+  31            
+  32          
+  33          /**
+  34            * @brief  LED?????????
+  35            * @param  Column ?????,??:0~7,0????
+  36            * @param  Data ????????,????,1??,0??
+  37            * @retval ?
+  38            */
+  39          void MatrixLED_ShowColumn(unsigned char Column,Data)
+  40          {
+  41   1        _74HC595_WriteByte(Data);
+  42   1        MATRIX_LED_PORT=~(0x80>>Column);
+  43   1        Delay1ms(1);
+  44   1        MATRIX_LED_PORT=0xFF;
+  45   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   MATRIXLED                                                             09/17/2026 15:33:00 PAGE 2   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,13 @@
+".\Objects\main.obj",
+".\Objects\Delay1ms.obj",
+".\Objects\DS1302.obj",
+".\Objects\key.obj",
+".\Objects\LCD1602.obj",
+".\Objects\MatrixKey.obj",
+".\Objects\MatrixLED.obj",
+".\Objects\Nixie.obj",
+".\Objects\Timer0.obj",
+".\Objects\UART.obj",
+".\Objects\Timer1.obj" 
+TO ".\Objects\project" 
+PRINT(".\Listings\project.m51") RAMSIZE(256) 
