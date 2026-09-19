@@ -85,7 +85,7 @@ void main()
   */
 		if(mumu==0)
 		{
-			if(signshuzi<=10)//бл╣ф
+			if(signshuzi<=100)//бл╣ф
 			{
 			greenzuo=1;
 			greenyou=1;

@@ -1,0 +1,11 @@
+# Keil 51 编译输出文件夹
+红绿灯设计/Objects/
+红绿灯设计/Listings/
+
+# Keil 其他产物
+*.obj
+*.lst
+*.m51
+*.hex
+*.build_log.htm
+*.uvgui.*
