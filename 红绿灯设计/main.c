@@ -170,7 +170,7 @@ void Timer0_Routine() interrupt 1
 		LEDshuzi++;//显示屏上的红绿灯数字
 		signshuzi++;
 	
-		T0Count=0;
+		
 		if(T0Count>=1000&&KeyNum==1)
 	{
 		LEDshuzi--;//显示屏上的红绿灯数字
@@ -179,7 +179,7 @@ void Timer0_Routine() interrupt 1
 		T0Count=0;
 		
 	}
-
+T0Count=0;
 	}
 	
 /*****************************************/
