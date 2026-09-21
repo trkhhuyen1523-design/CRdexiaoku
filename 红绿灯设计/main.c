@@ -85,7 +85,7 @@ void main()
   */
 		if(mumu==0)
 		{
-			if(signshuzi<=99)//ÂÌµÆ
+			if(signshuzi<=10)//ÂÌµÆ
 			{
 			greenzuo=1;
 			greenyou=1;
@@ -171,9 +171,17 @@ void Timer0_Routine() interrupt 1
 		signshuzi++;
 	
 		T0Count=0;
+		if(T0Count>=1000&&KeyNum==1)
+	{
+		LEDshuzi--;//ÏÔÊ¾ÆÁÉÏµÄºìÂÌµÆÊý×Ö
+		signshuzi--;
+	
+		T0Count=0;
 		
 	}
 
+	}
+	
 /*****************************************/
 /**
   * @brief  ¼ò¶ÌÕªÒª ÉùÒôÖÐÊà
@@ -206,10 +214,13 @@ void Timer0_Routine() interrupt 1
 	{
 	   mumu=1;
 			urgentshuzi++;
+		
 		if(urgentshuzi>=5000)
 		{
+			
 			urgentshuzi=0;
 			mumu=0;
+			
 		}
 		if(mumu==1)
 		{
