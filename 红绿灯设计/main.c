@@ -40,7 +40,10 @@ unsigned char T0BeePflat=0;
 //unsigned int ll=0;
 //unsigned char llp=0;
 void main()
-{  
+{  Beep = 0;
+Delay1ms(500);
+Beep = 1;
+Delay1ms(500);
 //	KeyNum=Key();//读取按键数字	
   signshuzi=0;//初始化	
 	Timer0Init();//初始化	
