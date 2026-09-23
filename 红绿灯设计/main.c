@@ -167,6 +167,7 @@ void Timer0_Routine() interrupt 1
 	if(T0BeeP>20)
 	{
 		T0BeePflat=~T0BeePflat;
+		T0BeeP=0;
 	}
 //	beepbin++;
 	if(T0Count>=1000)
