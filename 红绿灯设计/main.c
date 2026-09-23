@@ -26,7 +26,7 @@ sbit yellowzuo = P2^0;
 sbit redyou = P2^1;
 sbit greenyou = P2^2;
 sbit yellowyou = P2^3;
-sbit Beep=P2^5;
+sbit Beep=P2^4;
 /*****************************************/
 int mumu = 0;//mumu==1进入紧急全红状态mumu==0则正常
 unsigned char KeyNum=0;//根据按键去改变mumu状态,唯一途径
@@ -40,10 +40,7 @@ unsigned char T0BeePflat=0;
 //unsigned int ll=0;
 //unsigned char llp=0;
 void main()
-{  Beep = 0;
-Delay1ms(500);
-Beep = 1;
-Delay1ms(500);
+{  
 //	KeyNum=Key();//读取按键数字	
   signshuzi=0;//初始化	
 	Timer0Init();//初始化	
@@ -167,7 +164,7 @@ void Timer0_Routine() interrupt 1
     TH0 = 0xFC;
     T0Count++;
 	T0BeeP++;
-	if(T0BeeP>20)
+	if(T0BeeP>30)
 	{
 		T0BeePflat=~T0BeePflat;
 		T0BeeP=0;

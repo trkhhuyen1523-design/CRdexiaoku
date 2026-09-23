@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:37:39 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:44:03 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -36,7 +36,7 @@ line level    source
   26          sbit redyou = P2^1;
   27          sbit greenyou = P2^2;
   28          sbit yellowyou = P2^3;
-  29          sbit Beep=P2^5;
+  29          sbit Beep=P2^4;
   30          /*****************************************/
   31          int mumu = 0;//mumu==1½øÈë½ô¼±È«ºì×´Ì¬mumu==0ÔòÕý³£
   32          unsigned char KeyNum=0;//¸ù¾Ý°´¼üÈ¥¸Ä±ämumu×´Ì¬,Î¨Ò»Í¾¾¶
@@ -50,248 +50,245 @@ line level    source
   40          //unsigned int ll=0;
   41          //unsigned char llp=0;
   42          void main()
-  43          {  Beep = 0;
-  44   1      Delay1ms(500);
-  45   1      Beep = 1;
-  46   1      Delay1ms(500);
-  47   1      //  KeyNum=Key();//¶ÁÈ¡°´¼üÊý×Ö 
-  48   1        signshuzi=0;//³õÊ¼»¯  
-  49   1        Timer0Init();//³õÊ¼»¯ 
-  50   1        LCD_Init();//Õâ¸ö³õÊ¼»¯Ö»ÄÜÖ´ÐÐÒ»´Î   
-  51   1        while(1)
-  52   1        {
-  53   2          KeyNum=Key();//¶ÁÈ¡°´¼üÊý×Ö 
-  54   2            LCD_ShowNum(1,15,LEDshuzi,2);//ÊµÊ±ÏÔÊ¾ºìÂÌµÆÊ±¼ä
-C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:37:39 PAGE 2   
+  43          {  
+  44   1      //  KeyNum=Key();//¶ÁÈ¡°´¼üÊý×Ö 
+  45   1        signshuzi=0;//³õÊ¼»¯  
+  46   1        Timer0Init();//³õÊ¼»¯ 
+  47   1        LCD_Init();//Õâ¸ö³õÊ¼»¯Ö»ÄÜÖ´ÐÐÒ»´Î   
+  48   1        while(1)
+  49   1        {
+  50   2          KeyNum=Key();//¶ÁÈ¡°´¼üÊý×Ö 
+  51   2            LCD_ShowNum(1,15,LEDshuzi,2);//ÊµÊ±ÏÔÊ¾ºìÂÌµÆÊ±¼ä
+  52   2          
+  53   2        /*****************************************/
+  54   2      /**
+C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:44:03 PAGE 2   
 
-  55   2          
-  56   2        /*****************************************/
-  57   2      /**
-  58   2        * @brief ¼ò¶ÌÕªÒª ½ô¼±ºìÂÌµÆ
-  59   2        * @param  Command ÃèÊö²ÎÊý
-  60   2        * @retval ÃèÊö·µ»Ø
-  61   2        */
-  62   2      
-  63   2      //      if(ll>0&&ll<=10)//È«ºì
-  64   2      //    {
-  65   2      //      redshang=0;
-  66   2      //      redxia=0;
-  67   2      //      redzuo=0;
-  68   2      //      redyou=0;
-  69   2      //      greenshang=1;
-  70   2      //      greenxia=1;
-  71   2      //      greenzuo=1;
-  72   2      //      greenyou=1;
-  73   2      //      yellowshang=1;
-  74   2      //      yellowxia=1;
-  75   2      //      yellowzuo=1;
-  76   2      //      yellowyou=1;
-  77   2      //      LEDshuzi=1;
-  78   2      //    }
+  55   2        * @brief ¼ò¶ÌÕªÒª ½ô¼±ºìÂÌµÆ
+  56   2        * @param  Command ÃèÊö²ÎÊý
+  57   2        * @retval ÃèÊö·µ»Ø
+  58   2        */
+  59   2      
+  60   2      //      if(ll>0&&ll<=10)//È«ºì
+  61   2      //    {
+  62   2      //      redshang=0;
+  63   2      //      redxia=0;
+  64   2      //      redzuo=0;
+  65   2      //      redyou=0;
+  66   2      //      greenshang=1;
+  67   2      //      greenxia=1;
+  68   2      //      greenzuo=1;
+  69   2      //      greenyou=1;
+  70   2      //      yellowshang=1;
+  71   2      //      yellowxia=1;
+  72   2      //      yellowzuo=1;
+  73   2      //      yellowyou=1;
+  74   2      //      LEDshuzi=1;
+  75   2      //    }
+  76   2          /*****************************************/
+  77   2            
+  78   2         
   79   2          /*****************************************/
-  80   2            
-  81   2         
-  82   2          /*****************************************/
-  83   2      /**
-  84   2        * @brief ¼ò¶ÌÕªÒª Ö÷¿ØºìÂÌµÆ
-  85   2        * @param  Command ÃèÊö²ÎÊý
-  86   2        * @retval ÃèÊö·µ»Ø
-  87   2        */
-  88   2          if(mumu==0)
-  89   2          {
-  90   3            if(signshuzi<=10)//ÂÌµÆ
-  91   3            {
-  92   4            greenzuo=1;
-  93   4            greenyou=1;
-  94   4            greenshang=0;
-  95   4            greenxia=0;
-  96   4            redzuo=0;
-  97   4            redyou=0;
-  98   4            redshang=1;
-  99   4            redxia=1;
- 100   4            yellowshang=1;
- 101   4            yellowxia=1;
- 102   4            yellowzuo=1;
- 103   4            yellowyou=1;
- 104   4            }
- 105   3            if(signshuzi>=11&&signshuzi<15)//»ÆµÆ
- 106   3            {
- 107   4            greenshang=1;
- 108   4            greenxia=1;
- 109   4            greenzuo=1;
- 110   4            greenyou=1;
- 111   4            yellowshang=0;
- 112   4            yellowxia=0;
- 113   4            yellowzuo=1;
- 114   4            yellowyou=1;
- 115   4            redzuo=0;
- 116   4            redyou=0;
-C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:37:39 PAGE 3   
+  80   2      /**
+  81   2        * @brief ¼ò¶ÌÕªÒª Ö÷¿ØºìÂÌµÆ
+  82   2        * @param  Command ÃèÊö²ÎÊý
+  83   2        * @retval ÃèÊö·µ»Ø
+  84   2        */
+  85   2          if(mumu==0)
+  86   2          {
+  87   3            if(signshuzi<=10)//ÂÌµÆ
+  88   3            {
+  89   4            greenzuo=1;
+  90   4            greenyou=1;
+  91   4            greenshang=0;
+  92   4            greenxia=0;
+  93   4            redzuo=0;
+  94   4            redyou=0;
+  95   4            redshang=1;
+  96   4            redxia=1;
+  97   4            yellowshang=1;
+  98   4            yellowxia=1;
+  99   4            yellowzuo=1;
+ 100   4            yellowyou=1;
+ 101   4            }
+ 102   3            if(signshuzi>=11&&signshuzi<15)//»ÆµÆ
+ 103   3            {
+ 104   4            greenshang=1;
+ 105   4            greenxia=1;
+ 106   4            greenzuo=1;
+ 107   4            greenyou=1;
+ 108   4            yellowshang=0;
+ 109   4            yellowxia=0;
+ 110   4            yellowzuo=1;
+ 111   4            yellowyou=1;
+ 112   4            redzuo=0;
+ 113   4            redyou=0;
+ 114   4            redshang=1;
+ 115   4            redxia=1;
+ 116   4            
+C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:44:03 PAGE 3   
 
- 117   4            redshang=1;
- 118   4            redxia=1;
- 119   4            
- 120   4            }
- 121   3      if(signshuzi>=15&&signshuzi<27)//ºìµÆ
- 122   3            {
- 123   4            greenshang=1;
- 124   4            greenxia=1;
- 125   4            greenzuo=0;
- 126   4            greenyou=0;
- 127   4            yellowshang=1;
- 128   4            yellowxia=1;
- 129   4            yellowzuo=1;
- 130   4            yellowyou=1;
- 131   4            redzuo=1;
- 132   4            redyou=1;
- 133   4            redshang=0;
- 134   4            redxia=0;
- 135   4      }
- 136   3      if(signshuzi>=27&&signshuzi<32)//ºìµÆ×ó»Æ
- 137   3      {
- 138   4            greenshang=1;
- 139   4            greenxia=1;
- 140   4            greenzuo=1;
- 141   4            greenyou=1;
- 142   4            yellowshang=1;
- 143   4            yellowxia=1;
- 144   4            yellowzuo=0;
- 145   4            yellowyou=0;
- 146   4            redzuo=1;
- 147   4            redyou=1;
- 148   4            redshang=0;
- 149   4            redxia=0; 
- 150   4             ;
- 151   4      }
- 152   3      if(signshuzi>32)
- 153   3      {
- 154   4        signshuzi=0;
- 155   4      }
- 156   3          }
- 157   2          /*****************************************/
- 158   2          
- 159   2          }
- 160   1        
- 161   1        }
- 162          void Timer0_Routine() interrupt 1
- 163          {
- 164   1          static unsigned int T0Count;
- 165   1      
- 166   1          TL0 = 0x66;     
- 167   1          TH0 = 0xFC;
- 168   1          T0Count++;
- 169   1        T0BeeP++;
- 170   1        if(T0BeeP>20)
- 171   1        {
- 172   2          T0BeePflat=~T0BeePflat;
- 173   2          T0BeeP=0;
- 174   2        }
- 175   1      //  beepbin++;
- 176   1        if(T0Count>=1000)
- 177   1        {
- 178   2      //    LEDshuzi++;//ÏÔÊ¾ÆÁÉÏµÄºìÂÌµÆÊý×Ö
-C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:37:39 PAGE 4   
+ 117   4            }
+ 118   3      if(signshuzi>=15&&signshuzi<27)//ºìµÆ
+ 119   3            {
+ 120   4            greenshang=1;
+ 121   4            greenxia=1;
+ 122   4            greenzuo=0;
+ 123   4            greenyou=0;
+ 124   4            yellowshang=1;
+ 125   4            yellowxia=1;
+ 126   4            yellowzuo=1;
+ 127   4            yellowyou=1;
+ 128   4            redzuo=1;
+ 129   4            redyou=1;
+ 130   4            redshang=0;
+ 131   4            redxia=0;
+ 132   4      }
+ 133   3      if(signshuzi>=27&&signshuzi<32)//ºìµÆ×ó»Æ
+ 134   3      {
+ 135   4            greenshang=1;
+ 136   4            greenxia=1;
+ 137   4            greenzuo=1;
+ 138   4            greenyou=1;
+ 139   4            yellowshang=1;
+ 140   4            yellowxia=1;
+ 141   4            yellowzuo=0;
+ 142   4            yellowyou=0;
+ 143   4            redzuo=1;
+ 144   4            redyou=1;
+ 145   4            redshang=0;
+ 146   4            redxia=0; 
+ 147   4             ;
+ 148   4      }
+ 149   3      if(signshuzi>32)
+ 150   3      {
+ 151   4        signshuzi=0;
+ 152   4      }
+ 153   3          }
+ 154   2          /*****************************************/
+ 155   2          
+ 156   2          }
+ 157   1        
+ 158   1        }
+ 159          void Timer0_Routine() interrupt 1
+ 160          {
+ 161   1          static unsigned int T0Count;
+ 162   1      
+ 163   1          TL0 = 0x66;     
+ 164   1          TH0 = 0xFC;
+ 165   1          T0Count++;
+ 166   1        T0BeeP++;
+ 167   1        if(T0BeeP>30)
+ 168   1        {
+ 169   2          T0BeePflat=~T0BeePflat;
+ 170   2          T0BeeP=0;
+ 171   2        }
+ 172   1      //  beepbin++;
+ 173   1        if(T0Count>=1000)
+ 174   1        {
+ 175   2      //    LEDshuzi++;//ÏÔÊ¾ÆÁÉÏµÄºìÂÌµÆÊý×Ö
+ 176   2      //    signshuzi++;
+ 177   2        
+ 178   2          
+C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:44:03 PAGE 4   
 
- 179   2      //    signshuzi++;
- 180   2        
- 181   2          
- 182   2          if(mumu==0&&about==0)
- 183   2        {
- 184   3          LEDshuzi++;//ÏÔÊ¾ÆÁÉÏµÄºìÂÌµÆÊý×Ö
- 185   3          signshuzi++;
- 186   3        
- 187   3          T0Count=0;
- 188   3          
- 189   3        }
- 190   2      T0Count=0;
- 191   2        }
- 192   1        if(signshuzi==11)
- 193   1        {
- 194   2          LEDshuzi=1;
- 195   2        }
- 196   1        if(signshuzi==15)
- 197   1        {
- 198   2          LEDshuzi=1;
- 199   2        }
- 200   1        if(signshuzi==27)//ºìµÆ×ó»Æ
- 201   1      {
- 202   2           LEDshuzi=1;
- 203   2      }
- 204   1      if(signshuzi==32)//ºìµÆ×ó»Æ
- 205   1      {
- 206   2           LEDshuzi=1;
- 207   2      }
- 208   1      /*****************************************/
- 209   1      /**
- 210   1        * @brief  ¼ò¶ÌÕªÒª ÉùÒôÖÐÊà
- 211   1        * @param  Command ÃèÊö²ÎÊý
- 212   1        * @retval ÃèÊö·µ»Ø
- 213   1        */
+ 179   2          if(mumu==0&&about==0)
+ 180   2        {
+ 181   3          LEDshuzi++;//ÏÔÊ¾ÆÁÉÏµÄºìÂÌµÆÊý×Ö
+ 182   3          signshuzi++;
+ 183   3        
+ 184   3          T0Count=0;
+ 185   3          
+ 186   3        }
+ 187   2      T0Count=0;
+ 188   2        }
+ 189   1        if(signshuzi==11)
+ 190   1        {
+ 191   2          LEDshuzi=1;
+ 192   2        }
+ 193   1        if(signshuzi==15)
+ 194   1        {
+ 195   2          LEDshuzi=1;
+ 196   2        }
+ 197   1        if(signshuzi==27)//ºìµÆ×ó»Æ
+ 198   1      {
+ 199   2           LEDshuzi=1;
+ 200   2      }
+ 201   1      if(signshuzi==32)//ºìµÆ×ó»Æ
+ 202   1      {
+ 203   2           LEDshuzi=1;
+ 204   2      }
+ 205   1      /*****************************************/
+ 206   1      /**
+ 207   1        * @brief  ¼ò¶ÌÕªÒª ÉùÒôÖÐÊà
+ 208   1        * @param  Command ÃèÊö²ÎÊý
+ 209   1        * @retval ÃèÊö·µ»Ø
+ 210   1        */
+ 211   1      
+ 212   1      
+ 213   1      
  214   1      
- 215   1      
+ 215   1      /*****************************************/
  216   1      
- 217   1      
- 218   1      /*****************************************/
- 219   1      
- 220   1        /*****************************************/
- 221   1      /**
- 222   1        * @brief ¼ò¶ÌÕªÒª Ñ­»·Ä£¿é
- 223   1        * @param  Command ÃèÊö²ÎÊý
- 224   1        * @retval ÃèÊö·µ»Ø
- 225   1        */
- 226   1      
- 227   1        
- 228   1        /*****************************************/
- 229   1        /*****************************************/
- 230   1      /**
- 231   1        * @brief  ¼ò¶ÌÕªÒª Ä£Ê½×ª»»
- 232   1        * @param  Command ÃèÊö²ÎÊý
- 233   1        * @retval ÃèÊö·µ»Ø
- 234   1        */
- 235   1      
- 236   1        if(KeyNum==1||mumu==1)
- 237   1        {
- 238   2          about=1;
- 239   2           mumu=1;
- 240   2            urgentshuzi++;
-C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:37:39 PAGE 5   
+ 217   1        /*****************************************/
+ 218   1      /**
+ 219   1        * @brief ¼ò¶ÌÕªÒª Ñ­»·Ä£¿é
+ 220   1        * @param  Command ÃèÊö²ÎÊý
+ 221   1        * @retval ÃèÊö·µ»Ø
+ 222   1        */
+ 223   1      
+ 224   1        
+ 225   1        /*****************************************/
+ 226   1        /*****************************************/
+ 227   1      /**
+ 228   1        * @brief  ¼ò¶ÌÕªÒª Ä£Ê½×ª»»
+ 229   1        * @param  Command ÃèÊö²ÎÊý
+ 230   1        * @retval ÃèÊö·µ»Ø
+ 231   1        */
+ 232   1      
+ 233   1        if(KeyNum==1||mumu==1)
+ 234   1        {
+ 235   2          about=1;
+ 236   2           mumu=1;
+ 237   2            urgentshuzi++;
+ 238   2          
+ 239   2          if(urgentshuzi>=5000)
+ 240   2          {
+C51 COMPILER V9.54   MAIN                                                                  09/23/2026 22:44:03 PAGE 5   
 
- 241   2          
- 242   2          if(urgentshuzi>=5000)
- 243   2          {
- 244   3            
- 245   3            urgentshuzi=0;
- 246   3            mumu=0;
- 247   3            about=0;
- 248   3          }
- 249   2          if(mumu==1)
- 250   2          {
- 251   3            greenshang=1;
- 252   3            greenxia=1;
- 253   3            greenzuo=1;
- 254   3            greenyou=1;
- 255   3            yellowshang=1;
- 256   3            yellowxia=1;
- 257   3            yellowzuo=1;
- 258   3            yellowyou=1;
- 259   3            redzuo=0;
- 260   3            redyou=0;
- 261   3            redshang=0;
- 262   3            redxia=0; 
- 263   3            if(T0BeePflat)
- 264   3            {
- 265   4              Beep=~Beep;
- 266   4            }
- 267   3          }
- 268   2        }
- 269   1        
- 270   1        /*****************************************/
- 271   1        
- 272   1      }
+ 241   3            
+ 242   3            urgentshuzi=0;
+ 243   3            mumu=0;
+ 244   3            about=0;
+ 245   3          }
+ 246   2          if(mumu==1)
+ 247   2          {
+ 248   3            greenshang=1;
+ 249   3            greenxia=1;
+ 250   3            greenzuo=1;
+ 251   3            greenyou=1;
+ 252   3            yellowshang=1;
+ 253   3            yellowxia=1;
+ 254   3            yellowzuo=1;
+ 255   3            yellowyou=1;
+ 256   3            redzuo=0;
+ 257   3            redyou=0;
+ 258   3            redshang=0;
+ 259   3            redxia=0; 
+ 260   3            if(T0BeePflat)
+ 261   3            {
+ 262   4              Beep=~Beep;
+ 263   4            }
+ 264   3          }
+ 265   2        }
+ 266   1        
+ 267   1        /*****************************************/
+ 268   1        
+ 269   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    420    ----
+   CODE SIZE        =    402    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
