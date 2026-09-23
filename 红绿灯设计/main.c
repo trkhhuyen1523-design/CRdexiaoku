@@ -33,12 +33,15 @@ unsigned char KeyNum=0;//根据按键去改变mumu状态,唯一途径
 unsigned char LEDshuzi=1;//显示屏上的红绿灯数字
 unsigned char signshuzi=0;//根据此数字转换红绿灯上的状态
 unsigned int urgentshuzi=0;
+unsigned char about=0;
+unsigned int T0BeeP=0;
+unsigned char T0BeePflat=0;
 //unsigned char i=0;
 //unsigned int ll=0;
 //unsigned char llp=0;
 void main()
 {  
-	KeyNum=Key();//读取按键数字	
+//	KeyNum=Key();//读取按键数字	
   signshuzi=0;//初始化	
 	Timer0Init();//初始化	
 	LCD_Init();//这个初始化只能执行一次		
@@ -46,11 +49,7 @@ void main()
 	{
 		KeyNum=Key();//读取按键数字	
 			LCD_ShowNum(1,15,LEDshuzi,2);//实时显示红绿灯时间
-		if(mumu==1)
-	{
 		
-
-	}
 	/*****************************************/
 /**
   * @brief 简短摘要 紧急红绿灯
@@ -100,7 +99,7 @@ void main()
 			yellowzuo=1;
 			yellowyou=1;
 			}
-			if(signshuzi>11&&signshuzi<=15)//黄灯
+			if(signshuzi>=11&&signshuzi<15)//黄灯
 			{
 			greenshang=1;
 			greenxia=1;
@@ -116,7 +115,7 @@ void main()
 			redxia=1;
 			
 			}
-if(signshuzi>15&&signshuzi<=27)//红灯
+if(signshuzi>=15&&signshuzi<27)//红灯
       {
 	    greenshang=1;
 			greenxia=1;
@@ -131,7 +130,7 @@ if(signshuzi>15&&signshuzi<=27)//红灯
 			redshang=0;
 			redxia=0;
 }
-if(signshuzi>27&&signshuzi<=32)//红灯左黄
+if(signshuzi>=27&&signshuzi<32)//红灯左黄
 {
 	    greenshang=1;
 			greenxia=1;
@@ -164,24 +163,44 @@ void Timer0_Routine() interrupt 1
     TL0 = 0x66;			
     TH0 = 0xFC;
     T0Count++;
+	T0BeeP++;
+	if(T0BeeP>20)
+	{
+		T0BeePflat=~T0BeePflat;
+	}
 //	beepbin++;
 	if(T0Count>=1000)
 	{
-		LEDshuzi++;//显示屏上的红绿灯数字
-		signshuzi++;
+//		LEDshuzi++;//显示屏上的红绿灯数字
+//		signshuzi++;
 	
 		
-		if(T0Count>=1000&&KeyNum==1)
+		if(mumu==0&&about==0)
 	{
-		LEDshuzi--;//显示屏上的红绿灯数字
-		signshuzi--;
+		LEDshuzi++;//显示屏上的红绿灯数字
+		signshuzi++;
 	
 		T0Count=0;
 		
 	}
 T0Count=0;
 	}
-	
+	if(signshuzi==11)
+	{
+		LEDshuzi=1;
+	}
+	if(signshuzi==15)
+	{
+		LEDshuzi=1;
+	}
+	if(signshuzi==27)//红灯左黄
+{
+	   LEDshuzi=1;
+}
+if(signshuzi==32)//红灯左黄
+{
+	   LEDshuzi=1;
+}
 /*****************************************/
 /**
   * @brief  简短摘要 声音中枢
@@ -210,8 +229,9 @@ T0Count=0;
   * @retval 描述返回
   */
 
-	if(KeyNum==1)
+	if(KeyNum==1||mumu==1)
 	{
+		about=1;
 	   mumu=1;
 			urgentshuzi++;
 		
@@ -220,7 +240,7 @@ T0Count=0;
 			
 			urgentshuzi=0;
 			mumu=0;
-			
+			about=0;
 		}
 		if(mumu==1)
 		{
@@ -236,7 +256,10 @@ T0Count=0;
 			redyou=0;
 			redshang=0;
 			redxia=0;	
-			
+			if(T0BeePflat)
+			{
+				Beep=~Beep;
+			}
 		}
 	}
 	
