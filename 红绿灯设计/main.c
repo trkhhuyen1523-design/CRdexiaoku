@@ -164,9 +164,10 @@ void Timer0_Routine() interrupt 1
     TH0 = 0xFC;
     T0Count++;
 	T0BeeP++;
-	if(T0BeeP>30)
+	if(T0BeeP>=100)
 	{
-		T0BeePflat=~T0BeePflat;
+		
+		T0BeePflat=1;
 		T0BeeP=0;
 	}
 //	beepbin++;
@@ -257,9 +258,10 @@ if(signshuzi==32)//ºìµÆ×ó»Æ
 			redyou=0;
 			redshang=0;
 			redxia=0;	
-			if(T0BeePflat)
+			if(T0BeePflat==1)
 			{
 				Beep=~Beep;
+				T0BeePflat=0;
 			}
 		}
 	}
